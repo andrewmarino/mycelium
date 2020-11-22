@@ -1,12 +1,8 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
 import App from './App.vue';
 import store from './store/index';
 import './styles/main.css';
 
-Vue.config.productionTip = false;
-
-new Vue({
-  el: '#app',
-  store,
-  render: h => h(App),
-});
+const app = createApp(App);
+app.use(store);
+app.mount('#app');
