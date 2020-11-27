@@ -2,10 +2,10 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'https://mycelium.app',
+        target: 'https://mycelium.test',
         ws: true,
-        changeOrigin: true,
-      },
-    },
-  },
+        changeOrigin: true
+      }
+    }
+  }
 };
