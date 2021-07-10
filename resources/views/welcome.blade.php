@@ -1,5 +1,5 @@
-@extends('base')
+@extends('layout')
 
-@section('body')
+@section('app')
   <div id="app"></div>
 @endsection
