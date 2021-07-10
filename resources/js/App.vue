@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <Searchform />
     <section>
       <Card v-for="fungus in getResults" :key="fungus.slug" :fungus="fungus" />
@@ -20,7 +20,7 @@ export default {
   methods: {
     ...mapActions(['fetchFungi']),
   },
-  computed: mapGetters(['getResults', 'fetchMoreAvailable']),
+  computed: mapGetters(['getResults']),
   mounted() {
     this.fetchFungi();
   }

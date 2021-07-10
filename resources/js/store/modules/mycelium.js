@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { auth } from '../../data/auth';
 
 const state = {
   activeFilters: [],
@@ -29,35 +28,23 @@ const actions = {
    * @param string searchKeyword
    */
   async fetchFungi({ commit }, searchKeyword) {
-    let endpointUrl = '/api/pages/fungi/children';
-    let params = {
-      select: 'title, slug, content, url, panelImage',
-      limit: 3,
-      page: 1,
+    const endpointUrl = searchKeyword ? '/api/fungi/search' : '/api/fungi';
+    const params = {
       q: searchKeyword || null,
     };
 
     commit('setLoadingStatus', true);
 
-    await axios
-      .get(searchKeyword ? `${endpointUrl}/search` : endpointUrl, {
-        headers: {
-          Authorization: `Basic ${auth}`,
-        },
-        params,
-      })
-      .then(response => {
-        let { data } = response;
-        commit('setResults', data.data);
-        commit('setResultsTotal', data.pagination.total);
-      })
-      .catch(error => {
-        console.log(error);
-        commit('setErrorStatus', true);
-      })
-      .finally(() => {
-        commit('setLoadingStatus', false);
-      });
+    await axios.get(endpointUrl, {
+      params,
+    }).then(response => {
+      commit('setResults', response.data);
+    }).catch(error => {
+      console.log(error);
+      commit('setErrorStatus', true);
+    }).finally(() => {
+      commit('setLoadingStatus', false);
+    });
   },
 };
 
