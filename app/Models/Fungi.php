@@ -28,7 +28,13 @@ class Fungi extends Model
     {
         static::creating(function (Fungi $fungi) {
             if (!$fungi->slug) {
-                $fungi->fungi = Str::slug($fungi->title);
+                $fungi->slug = Str::slug($fungi->title);
+            }
+        });
+
+        static::updating(function (Fungi $fungi) {
+            if (!$fungi->published) {
+                $fungi->slug = Str::slug($fungi->title);
             }
         });
     }
