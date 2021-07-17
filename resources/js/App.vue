@@ -1,28 +1,19 @@
 <template>
-  <div>
-    <Searchform />
-    <section>
-      <Card v-for="fungus in getResults" :key="fungus.slug" :fungus="fungus" />
-    </section>
-  </div>
+  <Header />
+  <Main />
+  <Footer />
 </template>
 
 <script>
-import Card from './components/Card.vue';
-import Searchform from './components/Searchform.vue';
-import { mapGetters, mapActions } from 'vuex';
+import Footer from './components/Footer.vue';
+import Header from './components/Header.vue';
+import Main from './components/Main.vue';
 
 export default {
   components: {
-    Card,
-    Searchform
+    Footer,
+    Header,
+    Main,
   },
-  methods: {
-    ...mapActions(['fetchFungi']),
-  },
-  computed: mapGetters(['getResults']),
-  mounted() {
-    this.fetchFungi();
-  }
 }
 </script>
