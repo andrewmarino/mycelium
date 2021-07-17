@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const state = {
+  appInitStatus: null,
   activeFilters: [],
   hasError: false,
   isLoading: false,
@@ -10,10 +11,12 @@ const state = {
 };
 
 const getters = {
+  getAppInitStatus: state => state.appInitStatus,
   getResults: state => state.results,
 };
 
 const mutations = {
+  setAppInitStatus: (state, status) => (state.appInitStatus = status),
   setLoadingStatus: (state, loading) => (state.loadingStatus = loading),
   setErrorStatus: (state, error) => (state.error = error),
   setPage: (state, page) => (state.page = page),
@@ -43,6 +46,7 @@ const actions = {
       console.log(error);
       commit('setErrorStatus', true);
     }).finally(() => {
+      commit('setAppInitStatus', true);
       commit('setLoadingStatus', false);
     });
   },
