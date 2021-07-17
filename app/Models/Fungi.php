@@ -19,6 +19,15 @@ class Fungi extends Model
         $table->string('title');
         $table->string('slug');
         $table->string('common_name')->nullable();
+        $table->string('group_slug')->nullable();
+    }
+
+    /**
+     * Taxonomy of fungi.
+     */
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
     }
 
     /**
