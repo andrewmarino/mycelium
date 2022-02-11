@@ -15,9 +15,11 @@ use App\Http\Controllers\FungiController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/fungi', [FungiController::class, 'index']);
-Route::get('/fungi/search', [FungiController::class, 'search']);
+Route::controller(FungiController::class)->group(function () {
+    Route::get('/fungi', 'index');
+    Route::get('/fungi/search', 'search');
+});
