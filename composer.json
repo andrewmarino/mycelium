@@ -8,21 +8,20 @@
   ],
   "license": "MIT",
   "require": {
-    "php": "^7.3|^8.0",
-    "fideloper/proxy": "^4.4",
+    "php": "^8.0",
     "fruitcake/laravel-cors": "^2.0",
-    "guzzlehttp/guzzle": "^7.0.1",
-    "laravel/framework": "^8.40",
-    "laravel/tinker": "^2.5",
-    "ryangjchandler/orbit": "^0.9.0"
+    "guzzlehttp/guzzle": "^7.2",
+    "laravel/framework": "^9.0",
+    "laravel/sanctum": "^2.14",
+    "ryangjchandler/orbit": "^1.0"
   },
   "require-dev": {
-    "facade/ignition": "^2.5",
     "fakerphp/faker": "^1.9.1",
     "laravel/sail": "^1.0.1",
-    "mockery/mockery": "^1.4.2",
-    "nunomaduro/collision": "^5.0",
-    "phpunit/phpunit": "^9.3.3"
+    "mockery/mockery": "^1.4.4",
+    "nunomaduro/collision": "^6.1",
+    "phpunit/phpunit": "^9.5.10",
+    "spatie/laravel-ignition": "^1.0"
   },
   "autoload": {
     "psr-4": {
@@ -41,6 +40,9 @@
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
       "@php artisan package:discover --ansi"
     ],
+    "post-update-cmd": [
+      "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+    ],
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
     ],
@@ -56,7 +58,10 @@
   "config": {
     "optimize-autoloader": true,
     "preferred-install": "dist",
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true
