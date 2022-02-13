@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Str;
 use Orbit\Concerns\Orbital;
 
 class Fungi extends Model
 {
-    use Orbital;
+    use HasFactory, Orbital;
 
     /**
      * Define schema for a fungi.
@@ -20,6 +21,16 @@ class Fungi extends Model
         $table->string('slug');
         $table->string('common_name')->nullable();
         $table->string('group_slug')->nullable();
+    }
+
+    public function getKeyName()
+    {
+        return 'slug';
+    }
+
+    public function getIncrementing()
+    {
+        return false;
     }
 
     /**

@@ -3,15 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Str;
 use Orbit\Concerns\Orbital;
 
 class Group extends Model
 {
-    use Orbital;
-
-    public $timestamps = false;
+    use HasFactory, Orbital;
 
     /**
      * Define schema for a group.
@@ -30,6 +29,11 @@ class Group extends Model
     public function getIncrementing()
     {
         return false;
+    }
+
+    public function fungis()
+    {
+        return $this->hasMany(Fungi::class);
     }
 
     public static function booted()

@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Fungi;
+use App\Models\Group;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $group = Group::factory()->create();
+
+        Fungi::factory(25)->create([
+            'group_slug' => $group->slug,
+        ]);
     }
 }
