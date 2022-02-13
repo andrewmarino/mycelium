@@ -1,6 +1,8 @@
 module.exports = {
-  purge: { content: ['./public/**/*.html', './src/**/*.vue'] },
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './resources/views/**/*.blade.php',
+    './resources/**/*.vue',
+  ],
   theme: {
     container: {
       center: true,
