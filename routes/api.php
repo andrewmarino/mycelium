@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FungiController;
+use App\Http\Controllers\GroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(FungiController::class)->group(function () {
     Route::get('/fungi', 'index');
     Route::get('/fungi/search', 'search');
+});
+
+Route::controller(GroupController::class)->group(function () {
+    Route::get('/groups', 'index');
 });
