@@ -1,6 +1,6 @@
 <template>
   <main class="container mx-auto my-24 px-6">
-    <div class="grid gap-6 grid-cols-3">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       <Card v-for="fungus in getResults" :key="fungus.slug" :fungus="fungus" />
     </div>
     <div v-if="!getResults.length && getAppInitStatus === true">
